@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home/Experiments/Storage/limitedStorage</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home/Experiments/Storage/limitedStorage</title>
 </head>
 <body>
-    <a href="Experiments/index.html">Return</a>
-    <h1>Limited Storage (64)</h1>
-    
-    <section>
-        <p>Storage List:</p>
-        <p id="storagelist"></p>
-    </section>
+  <a href="Experiments/index.html">Return</a>
+  <h1>Limited Storage</h1>
+  <p>Storage List:</p>
+  <p id="storagelist"></p><label for="nd">New Data:</label> <input type="text" id="nd" name="nd"><br>
+  <button onclick="newItem()">Add Data</button> 
+  <script>
 
-    <section>
-        <label for="nd">New Data:</label>
-        <input type="text" id="nd" name="nd"><br>
-        <button onclick="newItem(parseFloat(document.getElementById('nd').innerHTML))">Add Data</button>
-    </section>
 
-    <script>
-        var MAX_LENGTH = 64;
-        var STORAGE_LIST = [0,1,1,1,1,1,1,1,12,32,4,234,2,34,2,34,234];
-        var STORAGE_ELEMENT = document.getElementById('storageList');
+      var MAX_LENGTH = 64;
+      var STORAGE_LIST = [
+        0, 1, 1, 1, 1, 1, 1, 1, 12, 32, 4, 234, 2, 34, 2, 34, 234,
+      ];
+      var STORAGE_ELEMENT = document.getElementById("storageList");
 
-        function newItem(item = 0) {
-            if (STORAGE_LIST.length++ > 64) STORAGE_LIST.shift();
+      function newItem() {
+        var item = parseFloat(document.getElementById('nd').innerHTML);
+        var estimated_length = STORAGE_LIST++;
+        
+        if (estimated_length > 64) STORAGE_LIST.shift();
 
-            STORAGE_LIST.push(item);
+        STORAGE_LIST.push(item);
 
-            STORAGE_ELEMENT.innerHTML = STORAGE_LIST.toString();
-        }
-    </script>
+        STORAGE_ELEMENT.innerHTML = STORAGE_LIST.toString();
+      }
+  </script>
 </body>
 </html>
