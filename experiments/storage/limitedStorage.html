@@ -22,7 +22,7 @@
 
     <script>
         var MAX_LENGTH = 64;
-        var STORAGE_LIST = [];
+        var STORAGE_LIST = [0,1,1,1,1,1,1,1,12,32,4,234,2,34,2,34,234];
         var STORAGE_ELEMENT = document.getElementById('storageList');
 
         function newItem(item = 0) {
@@ -30,16 +30,8 @@
 
             STORAGE_LIST.push(item);
 
-            STORAGE_ELEMENT.innerHTML = '';
-
-            for (let index = 0; index < STORAGE_LIST.length; index++) {
-                const element = STORAGE_LIST[index];
-                
-                STORAGE_ELEMENT.innerHTML += element+'<br>';
-            }
+            STORAGE_ELEMENT.innerHTML = STORAGE_LIST.toString();
         }
-
-        newItem(0);
     </script>
 </body>
 </html>
