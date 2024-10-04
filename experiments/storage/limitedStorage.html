@@ -7,5 +7,39 @@
 </head>
 <body>
     <a href="Experiments/index.html">Return</a>
+    <h1>Limited Storage (64)</h1>
+    
+    <section>
+        <p>Storage List:</p>
+        <p id="storagelist"></p>
+    </section>
+
+    <section>
+        <label for="nd">New Data:</label>
+        <input type="text" id="nd" name="nd"><br>
+        <button onclick="newItem(parseFloat(document.getElementById('nd').innerHTML))">Add Data</button>
+    </section>
+
+    <script>
+        var MAX_LENGTH = 64;
+        var STORAGE_LIST = [];
+        var STORAGE_ELEMENT = document.getElementById('storageList');
+
+        function newItem(item = 0) {
+            if (STORAGE_LIST.length++ > 64) STORAGE_LIST.shift();
+
+            STORAGE_LIST.push(item);
+
+            STORAGE_ELEMENT.innerHTML = '';
+
+            for (let index = 0; index < STORAGE_LIST.length; index++) {
+                const element = STORAGE_LIST[index];
+                
+                STORAGE_ELEMENT.innerHTML += element+'<br>';
+            }
+        }
+
+        newItem(0);
+    </script>
 </body>
 </html>
